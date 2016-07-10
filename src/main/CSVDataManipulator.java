@@ -24,18 +24,17 @@ public class CSVDataManipulator implements Iterable<ArrayList<String>> {
 	}
 
 	public void createNumber(int numberLineIndex, int numberPositionIndex, String value) {
-		if (numberLineIndex < data.size()) {
-			if (numberPositionIndex < data.get(numberLineIndex).size()) {
-				data.get(numberLineIndex).add(numberPositionIndex, value);
-			}
-		} else {
+		if (numberLineIndex >= data.size()) {
 			data.addAll(Stream.generate(() -> {
-				return new ArrayList<String>(Arrays.asList(""));
-			}).limit(numberLineIndex - data.size() + 1).collect(Collectors.toList()));
+				return new ArrayList<String>(Arrays.asList(" "));
+			}).limit(numberLineIndex - data.size()).collect(Collectors.toList()));
+			data.add(new ArrayList<String>());
+		} 
+		if (numberPositionIndex >= data.get(numberLineIndex).size()) {
 			data.get(numberLineIndex)
-					.addAll(Stream.generate(() -> " ").limit(numberPositionIndex).collect(Collectors.toList()));
-			data.get(numberLineIndex).add(value);
+					.addAll(Stream.generate(() -> " ").limit(numberPositionIndex - data.get(numberLineIndex).size()).collect(Collectors.toList()));
 		}
+		data.get(numberLineIndex).add(numberPositionIndex, value);
 	}
 
 	public String readNumber(int numberLineIndex, int numberPositionIndex) {
@@ -77,9 +76,9 @@ public class CSVDataManipulator implements Iterable<ArrayList<String>> {
 			int numberPositionIndex2) {
 		String numberBuffer = "";
 		try {
-			numberBuffer = data.get(numberLineIndex1).set(numberLineIndex1,
-					data.get(numberLineIndex2).get(numberLineIndex2));
-			data.get(numberLineIndex2).set(numberLineIndex2, numberBuffer);
+			numberBuffer = data.get(numberLineIndex1).set(numberPositionIndex1,
+					data.get(numberLineIndex2).get(numberPositionIndex2));
+			data.get(numberLineIndex2).set(numberPositionIndex2, numberBuffer);
 		} catch (IndexOutOfBoundsException e) {
 			System.err.println(INCORRECT_INDEX_ERROR);
 			throw e;

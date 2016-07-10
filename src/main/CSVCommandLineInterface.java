@@ -39,7 +39,7 @@ public class CSVCommandLineInterface {
 			return LOAD_FILE_FIRST_MESSAGE;
 		}
 		csvDataManipulator.switchNumber(line1 - 1, position1 - 1, line2 - 1, position2 - 1);
-		return "Lines switched!";
+		return "Numbers switched!";
 	}
 
 	@Command

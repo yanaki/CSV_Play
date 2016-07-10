@@ -8,7 +8,7 @@ public class CSVDataValidator {
 	private final static String UNEXPECTED_START_LINE_CHARACTER_ERROR = "line: %d, shouldn't start with whitespace!"
 			+ System.lineSeparator();
 	private final static String STARTS_WITH_ZERRO_ERROR = "Number starts with 0!";
-	private final static String CONTAINS_CHARACTER_ERROR = "Contains character error";
+	private final static String CONTAINS_CHARACTER_ERROR = "Contains character";
 
 	private CSVDataManipulator data;
 	
@@ -25,7 +25,7 @@ public class CSVDataValidator {
 			
 			for (String number : line) {
 
-				if (number.isEmpty()) {
+				if (number.isEmpty()) { //on initial file loading leading white spaces become empty strings
 					result.append(String.format(UNEXPECTED_START_LINE_CHARACTER_ERROR, numberLine));
 					continue;
 				}
