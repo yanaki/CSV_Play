@@ -11,7 +11,7 @@ public class CSVDataManipulator implements Iterable<ArrayList<String>> {
 	private ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
 
 	public ArrayList<ArrayList<String>> getData() {
-		return data; // TODO: Check why this works without this?
+		return data;
 	}
 
 	public void addLine(String line) {
