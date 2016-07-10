@@ -2,7 +2,7 @@ package main;
 
 import java.util.ArrayList;
 
-public class DataValidator {
+public class CSVDataValidator {
 	private final static String UNEXPECTED_CHARACTER_IN_NUMBER_ERROR = "line: %d, numberIndex: %d, character is not allowed!%s"
 			+ System.lineSeparator();
 	private final static String UNEXPECTED_START_LINE_CHARACTER_ERROR = "line: %d, shouldn't start with whitespace!"
@@ -10,9 +10,9 @@ public class DataValidator {
 	private final static String STARTS_WITH_ZERRO_ERROR = "Number starts with 0!";
 	private final static String CONTAINS_CHARACTER_ERROR = "Contains character error";
 
-	private CSV_Data_Manipulator data;
-
-	public DataValidator(CSV_Data_Manipulator data) {
+	private CSVDataManipulator data;
+	
+	public CSVDataValidator(CSVDataManipulator data) {
 		this.data = data;
 	}
 
