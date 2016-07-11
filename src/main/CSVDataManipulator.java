@@ -19,10 +19,6 @@ public class CSVDataManipulator implements Iterable<ArrayList<String>> {
 		data.add(lineToAdd);
 	}
 
-	public ArrayList<String> getLine(int line) {
-		return data.get(line);
-	}
-
 	public void createNumber(int numberLineIndex, int numberPositionIndex, String value) {
 		if (numberLineIndex >= data.size()) {
 			data.addAll(Stream.generate(() -> {
